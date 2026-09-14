@@ -1,0 +1,20 @@
+[
+  {
+    "break_date": "2020-03-01 00:00:00",
+    "status": "ok",
+    "n_pre": 30,
+    "n_post": 74,
+    "f_stat": 0.09491981112481845,
+    "p_value": 0.9626783175549528,
+    "interpretation": "fail to reject stability"
+  },
+  {
+    "break_date": "2022-02-01 00:00:00",
+    "status": "ok",
+    "n_pre": 53,
+    "n_post": 51,
+    "f_stat": 4.031289396960067,
+    "p_value": 0.00947623207147443,
+    "interpretation": "reject stability (coefficients differ)"
+  }
+]

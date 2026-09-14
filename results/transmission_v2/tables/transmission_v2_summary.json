@@ -1,0 +1,62 @@
+{
+  "sample_start": "2017-07-01",
+  "sample_end": "2026-04-01",
+  "n_months": 106,
+  "brent_to_diesel": {
+    "adj_r2": 0.25166890277155396,
+    "cumulative_beta_l0_l6": 0.232809240399183,
+    "peak_lag_month": 1,
+    "min_p_value": 0.009142780461544741
+  },
+  "diesel_to_cipi": {
+    "adj_r2": 0.18694796500951216,
+    "cumulative_beta_l0_l6": 0.15462547430961404,
+    "peak_lag_month": 0,
+    "min_p_value": 0.0005765742498955295
+  },
+  "mediation": [
+    {
+      "model": "brent_only_to_cipi",
+      "adj_r2": 0.06944873426227471,
+      "cum_brent_beta": 0.06134512148314543,
+      "cum_diesel_beta": NaN
+    },
+    {
+      "model": "brent_plus_diesel_to_cipi",
+      "adj_r2": 0.13604789097801462,
+      "cum_brent_beta": 0.012935490419863444,
+      "cum_diesel_beta": 0.1454181508496555
+    }
+  ],
+  "clause_proxy_comparison": [
+    {
+      "model": "cpi_only",
+      "adj_r2": -0.035738065864609814,
+      "aic": 246.2445428079075,
+      "oos_rmse": 0.5261130927370022,
+      "oos_rmse_improvement_vs_cpi_only_pct": 0.0
+    },
+    {
+      "model": "cpi_fx_brent",
+      "adj_r2": 0.027983934562811452,
+      "aic": 247.36871613489836,
+      "oos_rmse": 0.6702794625056135,
+      "oos_rmse_improvement_vs_cpi_only_pct": -27.402163481355974
+    },
+    {
+      "model": "cpi_diesel",
+      "adj_r2": 0.1858862125245584,
+      "aic": 227.05252290370817,
+      "oos_rmse": 0.6105091171469346,
+      "oos_rmse_improvement_vs_cpi_only_pct": -16.0414225715004
+    },
+    {
+      "model": "cpi_fx_brent_diesel",
+      "adj_r2": 0.13720729097581708,
+      "aic": 239.29392867868125,
+      "oos_rmse": 0.7724002988945001,
+      "oos_rmse_improvement_vs_cpi_only_pct": -46.81259781546892
+    }
+  ],
+  "data_source_note": "globalpetrolprices.com historical download/API is paid (per-data-point pricing); dailyfuels.com only exposes ~4 months of weekly history. Neither supplies a free 2017-2026 monthly Uganda pump-price series, so the UBOS CIPI DIESEL sub-index (already in panel_v1.0, same sample window) was used as the local pump/fuel-cost proxy instead."
+}
