@@ -306,14 +306,14 @@ def save(root: Path, pred: pd.DataFrame, pack: dict) -> None:
     m = pack["metrics"]
     with open(out / "summary.md", "w", encoding="utf-8") as f:
         f.write("# Calibration Round 3 Summary\n\n")
-        f.write(f"- Horizon: {m['chosen_spec']['horizon_months']} months\\n")
-        f.write(f"- Chosen model: {m['chosen_spec']['model']}\\n")
-        f.write(f"- Blend alpha (model weight): {m['chosen_spec']['alpha']:.2f}\\n")
-        f.write(f"- Naive RMSE: {m['naive']['rmse']:.4f}\\n")
-        f.write(f"- Calibrated RMSE: {m['blend']['rmse']:.4f}\\n")
-        f.write(f"- RMSE skill vs naive: {m['rmse_skill_vs_naive_pct']:.2f}%\\n")
-        f.write(f"- PI80 coverage: {m['interval_coverage_pct']['pi80']:.1f}%\\n")
-        f.write(f"- PI90 coverage: {m['interval_coverage_pct']['pi90']:.1f}%\\n")
+        f.write(f"- Horizon: {m['chosen_spec']['horizon_months']} months\n")
+        f.write(f"- Chosen model: {m['chosen_spec']['model']}\n")
+        f.write(f"- Blend alpha (model weight): {m['chosen_spec']['alpha']:.2f}\n")
+        f.write(f"- Naive RMSE: {m['naive']['rmse']:.4f}\n")
+        f.write(f"- Calibrated RMSE: {m['blend']['rmse']:.4f}\n")
+        f.write(f"- RMSE skill vs naive: {m['rmse_skill_vs_naive_pct']:.2f}%\n")
+        f.write(f"- PI80 coverage: {m['interval_coverage_pct']['pi80']:.1f}%\n")
+        f.write(f"- PI90 coverage: {m['interval_coverage_pct']['pi90']:.1f}%\n")
 
 
 def main() -> None:
