@@ -245,3 +245,13 @@ Decision-ready usage rule (current release):
 1. Use champion forecast path from `results/round3`.
 2. Budget with PI80/PI90 contingency bands.
 3. Recalibrate monthly and only promote challenger when it shows sustained positive skill over naive.
+
+### Entry 004 — Release tag and automated reruns enabled (2026-09-14)
+Actions completed:
+1. Created and pushed release tag `v0.2.0`.
+2. Published GitHub release for the calibrated artifact set.
+3. Added GitHub Actions workflow `.github/workflows/rerun-calibration.yml` to rerun calibration monthly and on manual dispatch.
+4. Triggered a manual workflow run and confirmed successful completion.
+
+Operational implication:
+- The project now has continuous rerun capability with artifact regeneration and commit-back automation, enabling ongoing calibration tracking and governance.
