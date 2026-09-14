@@ -1,0 +1,11 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+
+# Upstream repos cloned for local execution
+cio_pipeline-2/
+mofped-macrodata-api-downloader/
+
+# Local runtime artifacts
+*.log
