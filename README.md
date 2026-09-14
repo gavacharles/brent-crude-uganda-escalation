@@ -23,6 +23,8 @@ and produces:
 - Comprehensive execution report (living document): [docs/03_execution_report.md](docs/03_execution_report.md)
 - Results snapshot: [docs/04_results_snapshot.md](docs/04_results_snapshot.md)
 - Visual report (HTML): [results/report_run1.html](results/report_run1.html)
+- Calibration round 3 summary: [results/round3/summary.md](results/round3/summary.md)
+- Calibration round 3 figures: [results/round3/figures](results/round3/figures)
 
 ## Current status
 - Documentation baseline created
@@ -31,8 +33,6 @@ and produces:
 - Data assembly and model implementation pending
 
 ## Next immediate actions
-1. Clone and wire both upstream repositories into this workspace.
-2. Build the consolidated monthly analytical table.
-3. Run baseline econometric models.
-4. Run ML benchmark models.
-5. Publish first calibration report.
+1. Add project-specific BoQ basket weights and run project-level escalation calibration.
+2. Expand backtest window as new monthly UBOS releases arrive.
+3. Track rolling model skill versus naive baseline in automated reruns.

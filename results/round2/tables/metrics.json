@@ -1,0 +1,36 @@
+{
+  "horizon_months": 6,
+  "n_obs_total": 74,
+  "n_obs_train_core": 48,
+  "n_obs_validation": 12,
+  "n_obs_test": 14,
+  "blend_alpha_ridge_weight": 0.0,
+  "naive": {
+    "mae": 0.26963781778322876,
+    "rmse": 0.442349776209622,
+    "mape_pct": 57.90984744141622,
+    "directional_accuracy_pct": 85.71428571428571
+  },
+  "ridge": {
+    "mae": 1.1914644384778275,
+    "rmse": 1.2523141686440467,
+    "mape_pct": 360.68890361485046,
+    "directional_accuracy_pct": 64.28571428571429
+  },
+  "elastic_net": {
+    "mae": 1.1246991876270853,
+    "rmse": 1.2155650965507139,
+    "mape_pct": 342.34173891205955,
+    "directional_accuracy_pct": 64.28571428571429
+  },
+  "blend": {
+    "mae": 0.26963781778322876,
+    "rmse": 0.442349776209622,
+    "mape_pct": 57.90984744141622,
+    "directional_accuracy_pct": 85.71428571428571
+  },
+  "blend_interval_coverage_pct": {
+    "pi80": 71.42857142857143,
+    "pi90": 78.57142857142857
+  }
+}

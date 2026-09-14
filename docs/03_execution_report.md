@@ -215,3 +215,33 @@ Visual outputs produced:
 - Phase C (estimation): baseline completed.
 - Phase D (forecasting/scenarios): first pass completed with visual outputs.
 - Phase E (final reporting): in progress.
+
+### Entry 003 — Calibration round and reliability hardening (2026-09-14)
+Actions completed:
+1. Implemented a dedicated calibration workflow script:
+   - `analysis/calibrate_round3.py`
+2. Added model-spec search over lag structures and model families for 6-month escalation horizon.
+3. Added holdout evaluation, naive-benchmark comparison, and prediction interval coverage diagnostics.
+4. Generated a new artifact pack:
+   - `results/round3/tables/candidate_search.csv`
+   - `results/round3/tables/test_predictions.csv`
+   - `results/round3/tables/metrics.json`
+   - `results/round3/figures/*.png`
+   - `results/round3/summary.md`
+
+Calibration outcome:
+- On current sample, the optimized blend collapses to `alpha=0` (naive persistence), meaning exogenous challenger models do not yet beat naive in stable out-of-sample holdout.
+- This is a valid and important calibration result: the bankable choice for short-run operational forecasting is currently the benchmark model with explicit uncertainty bands.
+
+Reliability interpretation:
+- Forecast governance is now champion/challenger rather than single-model faith.
+- Confidence should be attached to:
+  - robust benchmark performance,
+  - interval coverage,
+  - and monthly rerun monitoring.
+- Causal/structural interpretation of Brent remains in scenario and pass-through analysis; point-forecast dominance is not yet established.
+
+Decision-ready usage rule (current release):
+1. Use champion forecast path from `results/round3`.
+2. Budget with PI80/PI90 contingency bands.
+3. Recalibrate monthly and only promote challenger when it shows sustained positive skill over naive.
