@@ -1,0 +1,28 @@
+{
+  "chosen_spec": {
+    "horizon_months": 6,
+    "lb": 2,
+    "lfx": 1,
+    "lcpi": 0,
+    "ly": 2,
+    "model": "ols",
+    "alpha": 0.0,
+    "n_obs": 82,
+    "n_features": 11
+  },
+  "naive": {
+    "mae": 0.26963781778322876,
+    "rmse": 0.442349776209622,
+    "directional_accuracy_pct": 85.71428571428571
+  },
+  "blend": {
+    "mae": 0.26963781778322876,
+    "rmse": 0.442349776209622,
+    "directional_accuracy_pct": 85.71428571428571
+  },
+  "rmse_skill_vs_naive_pct": 0.0,
+  "interval_coverage_pct": {
+    "pi80": 71.42857142857143,
+    "pi90": 78.57142857142857
+  }
+}
