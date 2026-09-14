@@ -1,0 +1,15 @@
+{
+  "sample_start": "2017-07-01",
+  "sample_end": "2026-04-01",
+  "n_months": 106,
+  "brent_to_fx_adj_r2": -0.007655408461539892,
+  "brent_fx_to_cpi_adj_r2": -0.035802147165414855,
+  "brent_fx_cpi_to_cipi_adj_r2": 0.005281258708969894,
+  "cumulative_brent_pass_through_l0_l6_to_cipi": 0.06588444338270048,
+  "peak_brent_lag_month_for_cipi": 2,
+  "clause_proxy_rmse": {
+    "cpi_only": 0.5261130927370022,
+    "cpi_fx_brent": 0.6702794625056135,
+    "improvement_pct": -27.402163481355974
+  }
+}
