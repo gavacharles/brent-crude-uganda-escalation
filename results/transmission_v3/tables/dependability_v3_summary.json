@@ -1,0 +1,120 @@
+{
+  "sample_start": "2017-07-01",
+  "sample_end": "2026-04-01",
+  "n_months": 106,
+  "brent_full_history_start": "1987-05-01",
+  "brent_full_history_end": "2026-09-01",
+  "structural_breaks_brent_to_diesel": [
+    {
+      "break_date": "2020-03-01 00:00:00",
+      "status": "ok",
+      "n_pre": 30,
+      "n_post": 74,
+      "f_stat": 0.09491981112481845,
+      "p_value": 0.9626783175549528,
+      "interpretation": "fail to reject stability"
+    },
+    {
+      "break_date": "2022-02-01 00:00:00",
+      "status": "ok",
+      "n_pre": 53,
+      "n_post": 51,
+      "f_stat": 4.031289396960067,
+      "p_value": 0.00947623207147443,
+      "interpretation": "reject stability (coefficients differ)"
+    }
+  ],
+  "mediation_bootstrap_ci": {
+    "adj_r2_direct": {
+      "mean": 0.16189850830188007,
+      "median": 0.14377099095317453,
+      "lo95": 0.002583518947393672,
+      "hi95": 0.3982284923666869,
+      "pct_same_sign_as_median": 97.75
+    },
+    "adj_r2_mediated": {
+      "mean": 0.2882721025323274,
+      "median": 0.2769594040375175,
+      "lo95": 0.1009323408247432,
+      "hi95": 0.5260221100182432,
+      "pct_same_sign_as_median": 100.0
+    },
+    "cum_brent_direct": {
+      "mean": 0.059913732676035336,
+      "median": 0.05667020380692001,
+      "lo95": 0.0023203044954617463,
+      "hi95": 0.14400241966349872,
+      "pct_same_sign_as_median": 98.05
+    },
+    "cum_brent_mediated": {
+      "mean": 0.028434267075881123,
+      "median": 0.019234580266127524,
+      "lo95": -0.03260029131893135,
+      "hi95": 0.14651675734708292,
+      "pct_same_sign_as_median": 82.3
+    },
+    "cum_diesel_mediated": {
+      "mean": 0.11093348942584894,
+      "median": 0.10886750795882935,
+      "lo95": -0.04258791039362171,
+      "hi95": 0.2726361686904185,
+      "pct_same_sign_as_median": 93.95
+    },
+    "absorption_pct": {
+      "mean": 289.40248036709164,
+      "median": 59.864427104156526,
+      "lo95": -59.254000928077154,
+      "hi95": 252.68190017913412,
+      "pct_same_sign_as_median": 91.64999999999999
+    }
+  },
+  "clause_proxy_regularized": [
+    {
+      "model": "cpi_only",
+      "oos_rmse_ols": 0.5261130927370022,
+      "oos_rmse_elasticnet": 0.5255093771333778,
+      "naive_persistence_rmse_ref": 1.3200185729851996
+    },
+    {
+      "model": "cpi_diesel",
+      "oos_rmse_ols": 0.6105091171469346,
+      "oos_rmse_elasticnet": 0.5130155925232476,
+      "naive_persistence_rmse_ref": 1.3200185729851996
+    },
+    {
+      "model": "cpi_fx_brent_diesel",
+      "oos_rmse_ols": 0.7724002988945001,
+      "oos_rmse_elasticnet": 0.5173459684883732,
+      "naive_persistence_rmse_ref": 1.3200185729851996
+    }
+  ],
+  "material_systemic_importance_top5_by_diesel_adj_r2_gain": [
+    {
+      "material": "CEM",
+      "adj_r2_gain_from_diesel": 0.08083664506102828,
+      "brent_absorption_by_diesel_pct": 184.11655910880015
+    },
+    {
+      "material": "AGG",
+      "adj_r2_gain_from_diesel": 0.07479489552006602,
+      "brent_absorption_by_diesel_pct": 132.90228261868808
+    },
+    {
+      "material": "LABOUR",
+      "adj_r2_gain_from_diesel": 0.07312333497970225,
+      "brent_absorption_by_diesel_pct": 75.40873889934741
+    },
+    {
+      "material": "IRON",
+      "adj_r2_gain_from_diesel": 0.0653720907192945,
+      "brent_absorption_by_diesel_pct": -329.5874125032645
+    },
+    {
+      "material": "STEEL",
+      "adj_r2_gain_from_diesel": 0.042676584892986535,
+      "brent_absorption_by_diesel_pct": 76.8766059143914
+    }
+  ],
+  "diesel_rank_by_own_diesel_gain_metric": null,
+  "diesel_rank_by_pre_existing_simi": null
+}
