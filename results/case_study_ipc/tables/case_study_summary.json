@@ -1,0 +1,63 @@
+{
+  "n_periods_local": 37,
+  "n_periods_foreign": 38,
+  "window": [
+    "2019-05-14",
+    "2024-02-11"
+  ],
+  "formula_weights": {
+    "fixed": 0.2,
+    "fuel": 0.1,
+    "bitumen": 0.2,
+    "steel": 0.05,
+    "cement": 0.1,
+    "equipment": 0.1,
+    "labour": 0.15,
+    "metal": 0.1
+  },
+  "petroleum_linked_share_of_variable_portion_pct": 37.5,
+  "convergent_validity": {
+    "local_fuel_index_level_vs_brent_level": {
+      "n": 37,
+      "pearson_r": 0.6024657202111596,
+      "p_value": 7.962449938387463e-05
+    },
+    "local_fuel_index_level_vs_cipi_diesel_level": {
+      "n": 37,
+      "pearson_r": 0.9987080697747297,
+      "p_value": 6.872786451197481e-47
+    },
+    "foreign_fuel_index_level_vs_brent_level": {
+      "n": 38,
+      "pearson_r": 0.9563920357755981,
+      "p_value": 7.897106480841922e-21
+    },
+    "local_bitumen_index_level_vs_brent_level": {
+      "n": 37,
+      "pearson_r": 0.5001569292414099,
+      "p_value": 0.0016201197083166028
+    },
+    "local_fuel_return_vs_brent_return": {
+      "n": 36,
+      "pearson_r": 0.09922299127080605,
+      "p_value": 0.5647833166328672
+    },
+    "local_fuel_return_vs_cipi_diesel_return": {
+      "n": 36,
+      "pearson_r": 0.9890532098441542,
+      "p_value": 7.627535442254477e-30
+    }
+  },
+  "structural_break_replication_local_fuel_index": {
+    "pre_2022_02_mean_monthly_return_pct": 0.507769344483546,
+    "pre_2022_02_n": 17,
+    "post_2022_02_mean_monthly_return_pct": 1.336022408790642,
+    "post_2022_02_n": 19,
+    "ratio_post_over_pre": 2.631160040095597
+  },
+  "contract_own_index_reference_lag_days": {
+    "median": 49.0,
+    "min": 49.0,
+    "max": 49.0
+  }
+}

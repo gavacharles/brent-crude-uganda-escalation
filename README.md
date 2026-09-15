@@ -8,15 +8,16 @@ This repository asks one question in four parts: does a Brent crude shock move t
 
 ## Headline finding
 
-A Brent shock does **not** reach Ugandan construction costs mainly through the exchange rate or CPI — the textbook route was tested first and found statistically empty. It reaches them through the **local diesel price**: Brent moves diesel within about a month; diesel moves construction inflation contemporaneously; and controlling for diesel removes roughly 79% of what looks, on the surface, like Brent's own direct effect. That channel got **more than five times stronger after the 2022 commodity shock**, and — once the forecasting model is regularized instead of fit by plain OLS — a diesel-augmented escalation proxy is the first specification in this project to beat a CPI-only benchmark out of sample. Diesel turns out to be the *gateway* for the shock; **cement** is the domestic *hub* that absorbs and spreads it furthest, a result confirmed by two independent methods (see [docs/06](docs/06_transmission_and_escalation_clause_findings.md) and [docs/07](docs/07_journal_article_manuscript.md)).
+A Brent shock does **not** reach Ugandan construction costs mainly through the exchange rate or CPI — the textbook route was tested first and found statistically empty. It reaches them through the **local diesel price**: Brent moves diesel within about a month; diesel moves construction inflation contemporaneously; and controlling for diesel removes roughly 79% of what looks, on the surface, like Brent's own direct effect. That channel got **more than five times stronger after the 2022 commodity shock**, and — once the forecasting model is regularized instead of fit by plain OLS — a diesel-augmented escalation proxy is the first specification in this project to beat a CPI-only benchmark out of sample. Diesel turns out to be the *gateway* for the shock; **cement** is the domestic *hub* that absorbs and spreads it furthest, a result confirmed by two independent methods. A real, anonymized contract's own price-adjustment history then corroborated both the mechanism and the 2022 timing independently (see [docs/06](docs/06_transmission_and_escalation_clause_findings.md) and [docs/07](docs/07_journal_article_manuscript.md)).
 
-## How the analysis got here (three stages)
+## How the analysis got here (four stages)
 
 | Stage | Question | Result |
 |---|---|---|
 | **1. Global chain** — `analysis/brent_transmission_policy.py` → [`results/transmission/`](results/transmission/) | Brent → FX → CPI → construction inflation? | Every link statistically insignificant. Chain too long, each hop underpowered. |
 | **2. Diesel pivot** — `analysis/brent_diesel_transmission.py` → [`results/transmission_v2/`](results/transmission_v2/) | Brent → local diesel index → construction inflation? | Clean, significant mediation (p < 0.01 on the key link); diesel absorbs most of Brent's apparent effect. |
 | **3. Dependability pass** — `analysis/brent_dependability_v3.py` → [`results/transmission_v3/`](results/transmission_v3/) | Does it survive regularization, a structural-break test, a bootstrap, and cross-validation against an independent network? | Yes, with one twist: the channel broke and strengthened >5x after Feb 2022, and cement — not diesel — is the systemically important downstream material. |
+| **4. Real-contract validation** — `analysis/ipc_case_study_validation.py` → [`results/case_study_ipc/`](results/case_study_ipc/) | Does a real, anonymized contract's own price-adjustment history agree? | Yes: its own fuel index tracks Brent at r=0.96, a new bitumen channel tracks Brent at r=0.50, and its fuel index independently accelerates 2.6x at the same Feb-2022 date. |
 
 Two candidate live pump-price sources (`globalpetrolprices.com`, `dailyfuels.com`) were evaluated and rejected for Stage 2 — one sells its historical series per data point, the other only exposes ~4 months of history. The UBOS CIPI `DIESEL` sub-index already in the panel turned out to be the better instrument anyway: it's the fuel-cost series actually embedded in the cost basket being modelled.
 
@@ -24,13 +25,14 @@ A separate, earlier line of work in this repo — the escalation-index **forecas
 
 ## Read this next
 
-- **[docs/07 — Journal article manuscript](docs/07_journal_article_manuscript.md)** — the full write-up: abstract, literature review, methodology with every choice justified, results with figures, discussion, limitations, conclusion. Start here for the complete argument.
+- **[docs/07 — Journal article manuscript](docs/07_journal_article_manuscript.md)** — the full write-up: abstract, literature review, methodology with every choice justified, results with figures, discussion, limitations, conclusion, including the real-contract case study (§2.11, §3.5, §4.5). Start here for the complete argument.
 - **[docs/06 — Consolidated findings](docs/06_transmission_and_escalation_clause_findings.md)** — the working notes behind docs/07, including the FIDIC Sub-Clause 13.8 critique in full.
+- **[writing/substack_brent_to_site.md](writing/substack_brent_to_site.md)** — an accessible, narrative version of the same findings for a general audience.
 - **[docs/01–05](docs/)** — project brief, model specification, execution log, and the forecast-calibration track's history.
 
 ## What the FIDIC critique actually claims
 
-Bounded, not blanket. The evidence supports criticizing **how Sub-Clause 13.8 is commonly specified** — a generic CPI/materials index instead of a dedicated fuel index, fixed weights instead of BoQ-matched ones, infrequent revision against a channel with a ~1-month lag and a 2022 regime break, and naive index-stacking that (unregularized) makes tracking worse, not better. It does **not** yet claim any real FIDIC-computed adjustment has over- or under-compensated a real contractor — that needs external validation against actual project/claims data, which this repo hasn't done. Full argument in [docs/06 §FIDIC](docs/06_transmission_and_escalation_clause_findings.md) and [docs/07 §4.5](docs/07_journal_article_manuscript.md).
+Bounded, not blanket. The evidence supports criticizing **how Sub-Clause 13.8 is commonly specified** — a generic CPI/materials index instead of a dedicated fuel index, fixed weights instead of BoQ-matched ones, infrequent revision against a channel with a ~1-month lag and a 2022 regime break, and naive index-stacking that (unregularized) makes tracking worse, not better. The one real contract checked so far already specifies dedicated fuel *and* bitumen indices — together 37.5% of its variable weighting — so that specific critique doesn't apply to every contract; the evidence there instead points at fixed weights and revision timing not keeping pace with a channel that broke regime in 2022. It does **not** yet claim any real FIDIC-computed adjustment has over- or under-compensated a real contractor by any amount — that needs a genuine sample of project/claims data across multiple contracts, which this repo has only begun with one case. Full argument in [docs/06 §FIDIC](docs/06_transmission_and_escalation_clause_findings.md) and [docs/07 §4.6](docs/07_journal_article_manuscript.md).
 
 ## Repository map
 
@@ -39,15 +41,20 @@ analysis/                          all modeling scripts (run with the cio_pipeli
   brent_transmission_policy.py       Stage 1: Brent -> FX -> CPI -> CIPI
   brent_diesel_transmission.py       Stage 2: Brent -> Diesel -> CIPI (mediation)
   brent_dependability_v3.py          Stage 3: regularization, break test, bootstrap, systemic importance
+  ipc_case_study_validation.py       Stage 4: real, anonymized contract validation
   calibrate_round3.py                 forecast-calibration track (live champion, reran monthly by CI)
   run_brent_escalation_model.py       original Run 1 baseline (historical reference, see docs/04)
 docs/                               numbered, append-only project log — 01 brief through 07 manuscript
+writing/                            audience-facing writeups (e.g. the Substack piece)
 results/
   transmission/, transmission_v2/, transmission_v3/   Stage 1-3 outputs (tables, figures, JSON)
+  case_study_ipc/                     Stage 4 outputs — anonymized, numeric only (no contract identity)
   round3/                             live forecast-calibration champion (CI-managed)
   tables/, figures/, report_run1.html Run 1 baseline outputs (historical reference)
 .github/workflows/rerun-calibration.yml   monthly automated rerun of the forecast-calibration track
 ```
+
+Note: any raw contract workbook used to build a Stage 4 case study is git-ignored (`*.xlsx` in `.gitignore`) and never committed — only the anonymized, numeric extracts under `results/case_study_ipc/` are tracked.
 
 ## Reproducing the transmission analysis
 
@@ -58,11 +65,11 @@ cio_pipeline-2/.venv/bin/python3 analysis/brent_diesel_transmission.py
 cio_pipeline-2/.venv/bin/python3 analysis/brent_dependability_v3.py
 ```
 
-Requires `cio_pipeline-2` (constructs `data/processed/panel_v1.0.csv` from UBOS CIPI + MoFPED/BoU sources) cloned alongside this repo and its Phase 0 build already run (`cio_pipeline-2/run_phase0.sh`); Brent crude is pulled live from FRED (`DCOILBRENTEU`) at run time.
+Requires `cio_pipeline-2` (constructs `data/processed/panel_v1.0.csv` from UBOS CIPI + MoFPED/BoU sources) cloned alongside this repo and its Phase 0 build already run (`cio_pipeline-2/run_phase0.sh`); Brent crude is pulled live from FRED (`DCOILBRENTEU`) at run time. `ipc_case_study_validation.py` additionally requires a source contract workbook (not included in this repo) placed at the project root.
 
 ## Status and known limitations
 
-Working analysis, not a finished paper or legal advice. Sample is 106 monthly observations (2017-07 to 2026-04) — a hard ceiling on precision throughout. No formal stationarity/cointegration diagnostics are reported yet; no result has been checked against a real project's cost or claims records; four material series (nails, iron-and-steel combined, aluminium, murram) have a data-coverage gap. Full list in [docs/07 §5](docs/07_journal_article_manuscript.md).
+Working analysis, not a finished paper or legal advice. Sample is 106 monthly observations (2017-07 to 2026-04) — a hard ceiling on precision throughout. No formal stationarity/cointegration diagnostics are reported yet; external validation now covers one real, anonymized contract (Stage 4) rather than none, but that's a single case, not a sample; four material series (nails, iron-and-steel combined, aluminium, murram) have a data-coverage gap. Full list in [docs/07 §5](docs/07_journal_article_manuscript.md).
 
 ## Upstream repositories
 

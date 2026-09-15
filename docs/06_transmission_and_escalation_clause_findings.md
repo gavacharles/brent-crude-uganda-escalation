@@ -84,6 +84,15 @@ This strengthens §1 and §4 above: the case for a dedicated fuel/energy sub-ind
 
 **Caveats on this pass**: the "% of Brent's effect absorbed by diesel" ratio metric is unstable when a material's direct Brent effect is near zero (produces nonsense values like +719% for BRICK, +1149% for LIME) — treat adj. R² gain as the trustworthy ranking metric, not that ratio. Four materials (NAILS, IRONSTEEL, ALU, MURRAM) drop out of the mediation table for insufficient overlapping observations — a pre-existing data-coverage gap in those UBOS series, not new.
 
+## Addendum 3 (2026-09-15): real-contract case-study validation
+`analysis/ipc_case_study_validation.py` → `results/case_study_ipc/`. First genuinely external check in this project: an anonymized 2019–2024 price-adjustment history from a real Ugandan road-works contract (Design & Build, MDB-harmonized FIDIC terms, 37 valuation periods). No employer, contractor, engineer, or project identity is used in any committed file; the source workbook is git-ignored.
+
+- The contract's own formula already separates Fuel & Lubricant (weight 0.10) and Bitumen (weight 0.20) from Steel, Cement, Equipment, and Labour — more granular than the generic-CPI strawman this project's earlier critique assumed. Fuel + bitumen (both petroleum-linked) make up **37.5% of the formula's variable portion**.
+- Convergent validity: the contract's own USD-denominated fuel index correlates with Brent at **r = 0.96** (p < 0.0001); its bitumen index — a channel not present anywhere in the CIPI panel — correlates with Brent at **r = 0.50** (p = 0.0016). Its local fuel index correlates with this project's own CIPI DIESEL index at r = 0.999, which reads as the same or a near-identical UBOS series rather than independent confirmation.
+- The contract's own fuel-index return series shows a **2.6x acceleration** in mean monthly growth after February 2022 — the same date as the panel-based structural break (§Addendum 2), found independently and before this case-study data was examined.
+- The contract fixes its index-reference date 49 days before each period's end — a real-world lag convention, set by the drafting parties in 2019, that sits close to (if slightly longer than) this project's own estimated ~1-month lag.
+- Full write-up: `docs/07_journal_article_manuscript.md` §2.11, §3.5, §4.5.
+
 ## Caveats
 - 106 monthly observations is a modest sample for lag-rich, multi-material econometrics; most individual coefficients are not significant at conventional levels.
 - Results should be read as directional evidence to inform escalation-clause *design choices* (which indices, what frequency, how to weight), not as precise elasticities to hard-code into a formula.
