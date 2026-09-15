@@ -9,3 +9,9 @@ mofped-macrodata-api-downloader/
 
 # Local runtime artifacts
 *.log
+
+# Source contract documents (identifying/confidential — never commit raw).
+# Only anonymized, numeric extracts under results/case_study_ipc/ are tracked.
+IPC*.xlsx
+*.xls
+*.xlsx

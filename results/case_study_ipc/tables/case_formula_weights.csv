@@ -1,0 +1,10 @@
+category,weight
+fixed,0.2
+fuel,0.1
+bitumen,0.2
+steel,0.05
+cement,0.1
+equipment,0.1
+labour,0.15
+metal,0.1
+petroleum_linked_total_(fuel+bitumen),0.30000000000000004
