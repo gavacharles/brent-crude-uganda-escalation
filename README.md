@@ -16,7 +16,6 @@ analysis/
   run_brent_escalation_model.py      original baseline run
 docs/                                numbered project log: brief, model specification, execution report,
                                      snapshots, findings, manuscript
-writing/                             audience-facing write-ups
 results/
   transmission/, transmission_v2/, transmission_v3/   outputs of the three transmission scripts
   case_study_ipc/                    anonymised, numeric-only outputs of the contract validation
