@@ -15,3 +15,13 @@ mofped-macrodata-api-downloader/
 IPC*.xlsx
 *.xls
 *.xlsx
+
+# Paper drafts and write-ups are kept private (moved 2026-11-20)
+/docs/01_project_brief.md
+/docs/02_model_spec_brent_to_construction_escalation_uganda.md
+/docs/03_execution_report.md
+/docs/04_results_snapshot.md
+/docs/05_calibration_round3_snapshot.md
+/docs/06_transmission_and_escalation_clause_findings.md
+/docs/07_journal_article_manuscript.md
+/writing/
